@@ -1,0 +1,19 @@
+{
+  "name": "jcra",
+  "version": "1.0.0",
+  "description": "CRA(`npx create-react-app`) 명령어를 손수 작성해보는 레포지토리",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zwonlala/jcra.git"
+  },
+  "author": "zwonlala",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zwonlala/jcra/issues"
+  },
+  "homepage": "https://github.com/zwonlala/jcra#readme"
+}
