@@ -9,8 +9,6 @@ const { version } = require("./package.json");
 const CMD_CLI_LAST_COMMIT = "git rev-parse --short HEAD";
 const CMD_CLI_AUTHOR = "git config user.name";
 
-
- 
 module.exports = {
     mode: "development", // "development" "production" "none"
     entry: "./src/index.js",
@@ -21,7 +19,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.css$/,
+                test: /\.css$/,
                 use: [
                     /**
                      * - production 환경의 경우
@@ -38,7 +36,7 @@ module.exports = {
                 ], // 역순으로 적용되어, 뒤에서부터 "css-loader" -> "style-loader" 적용되어야 함
             },
             {
-                test: /.(ico|svg|png)$/,
+                test: /\.(ico|svg|png)$/,
                 loader: "file-loader",
                 options: {
                     publicPath: "./dist",
@@ -46,7 +44,7 @@ module.exports = {
                 },
             },
             {
-                test: /.png$/,
+                test: /\.png$/,
                 loader: "url-loader",
                 options: {
                     publicPath: "./dist",
@@ -75,7 +73,7 @@ module.exports = {
                     ? {
                           collapseWhitespace: true, // 빈칸 제거
                           removeComments: true, // 주석 제거
-                      }
+                    }
                     : false,
             hash: true, // 정적 파일을 불러올때 쿼리문자열에 웹팩 해쉬값을 추가함.
         }),
