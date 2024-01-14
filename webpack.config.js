@@ -13,6 +13,9 @@ const CMD_CLI_AUTHOR = 'git config user.name';
 module.exports = {
   mode: 'development', // "development" "production" "none"
   entry: './src/index.jsx',
+  resolve: {
+    extensions: ['.jsx', '.js'] // webpack이 파일 확장자를 읽어내는 순서
+  },
   output: {
     filename: '[name].js',
     path: path.resolve('./dist'), // Q. path.resolve() 사용하는 이유?
