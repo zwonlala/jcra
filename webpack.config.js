@@ -14,7 +14,7 @@ module.exports = {
   mode: 'development', // "development" "production" "none"
   entry: './src/index.jsx',
   resolve: {
-    extensions: ['.jsx', '.js'] // webpack이 파일 확장자를 읽어내는 순서
+    extensions: ['.jsx', '.js'], // webpack이 파일 확장자를 읽어내는 순서
   },
   output: {
     filename: '[name].js',
@@ -26,16 +26,14 @@ module.exports = {
         test: /\.css$/,
         use: [
           /**
-                     * - production 환경의 경우
-                     * 하단의 MiniCssExtractPlugin를 통해 별도의 css 파일로 추출되게 적용하였으므로,
-                     * 별도의 로더(MiniCssExtractPlugin.loader) 적용
-                     *
-                     * - non-production 환경의 경우
-                     * css-loader에 의해 자바스크립트 모듈로 변경된 스타일시트를 적용하기 위해 style-loader 적용
-                     */
-          process.env.NODE_ENV === 'production'
-            ? MiniCssExtractPlugin.loader
-            : 'style-loader',
+           * - production 환경의 경우
+           * 하단의 MiniCssExtractPlugin를 통해 별도의 css 파일로 추출되게 적용하였으므로,
+           * 별도의 로더(MiniCssExtractPlugin.loader) 적용
+           *
+           * - non-production 환경의 경우
+           * css-loader에 의해 자바스크립트 모듈로 변경된 스타일시트를 적용하기 위해 style-loader 적용
+           */
+          process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
           'css-loader',
         ], // 역순으로 적용되어, 뒤에서부터 "css-loader" -> "style-loader" 적용되어야 함
       },
@@ -66,29 +64,27 @@ module.exports = {
   plugins: [
     new webpack.BannerPlugin({
       banner:
-                `Version: ${version}`
-                + `\nBuild Date: ${new Date().toLocaleString()}`
-                + `\nAuthor: ${childProcess.execSync(CMD_CLI_AUTHOR)}`
-                + `Last Commit: ${childProcess.execSync(CMD_CLI_LAST_COMMIT)}`,
+        `Version: ${version}` +
+        `\nBuild Date: ${new Date().toLocaleString()}` +
+        `\nAuthor: ${childProcess.execSync(CMD_CLI_AUTHOR)}` +
+        `Last Commit: ${childProcess.execSync(CMD_CLI_LAST_COMMIT)}`,
     }),
     new webpack.EnvironmentPlugin([]),
     /**
-         * @docs https://github.com/jantimon/html-webpack-plugin#options
-         */
+     * @docs https://github.com/jantimon/html-webpack-plugin#options
+     */
     new HtmlWebpackPlugin({
       template: './public/index.html',
       minify:
-                process.env.NODE_ENV === 'production'
-                  ? {
-                    collapseWhitespace: true, // 빈칸 제거
-                    removeComments: true, // 주석 제거
-                  }
-                  : false,
+        process.env.NODE_ENV === 'production'
+          ? {
+              collapseWhitespace: true, // 빈칸 제거
+              removeComments: true, // 주석 제거
+            }
+          : false,
       hash: true, // 정적 파일을 불러올때 쿼리문자열에 웹팩 해쉬값을 추가함.
     }),
     new CleanWebpackPlugin(),
-    ...(process.env.NODE_ENV === 'production'
-      ? [new MiniCssExtractPlugin({ filename: '[name].css' })]
-      : []),
+    ...(process.env.NODE_ENV === 'production' ? [new MiniCssExtractPlugin({ filename: '[name].css' })] : []),
   ],
 };

@@ -6,8 +6,8 @@ export default function Timer() {
       <span>09시</span>
       <span>29분</span>
 
-      <button type="button">초기화</button>
-      <button type="button">시작</button>
+      <button type='button'>초기화</button>
+      <button type='button'>시작</button>
     </div>
   );
 }
