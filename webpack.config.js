@@ -10,8 +10,13 @@ const { version } = require('./package.json');
 const CMD_CLI_LAST_COMMIT = 'git rev-parse --short HEAD';
 const CMD_CLI_AUTHOR = 'git config user.name';
 
+/**
+ * "development" "production" "none" 중 하나
+ */
+const mode = process.env.NODE_ENV || 'development';
+
 module.exports = {
-  mode: 'development', // "development" "production" "none"
+  mode,
   entry: './src/index.jsx',
   resolve: {
     extensions: ['.jsx', '.js'], // webpack이 파일 확장자를 읽어내는 순서
