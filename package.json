@@ -6,9 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
-    "pretty": "prettier --write 'src/**/*.{ts,tsx,scss,css,json}'",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color --fix",
+    "pretty": "prettier --write 'src/**/*.{js,jsx,css,json}'",
     "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "repository": {
     "type": "git",
