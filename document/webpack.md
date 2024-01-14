@@ -108,3 +108,36 @@ webpack 은 확장자가 명시되지 않은 경우, `resolve.extensions` 설정
 &nbsp;
 
 
+
+
+## mode 에 대한 설명
+
+https://fgh0296.tistory.com/15 참고
+
+
+
+&nbsp;
+&nbsp;
+
+
+
+## webpack-merge 란?
+
+1.0에서 사용하던 방식이 webpack-merge 였음
+
+- (공통) webpack.common.js
+- (dev 환경) webpack.dev.js
+- (prod 환경) webpack.prod.js
+
+
+이렇게 설정 나눠서 사용하는 것
+
+https://fgh0296.tistory.com/15 참고
+
+
+
+
+&nbsp;
+&nbsp;
+
+
