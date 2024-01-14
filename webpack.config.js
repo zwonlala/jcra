@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 주의! 구조분해 할당하여 CleanWebpackPlugin 사용하여야 함!
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-
+const TerserPlugin = require('terser-webpack-plugin');
 const { version } = require('./package.json');
 
 const CMD_CLI_LAST_COMMIT = 'git rev-parse --short HEAD';
@@ -94,9 +94,24 @@ module.exports = {
     ...(process.env.NODE_ENV === 'production' ? [new MiniCssExtractPlugin({ filename: '[name].css' })] : []),
   ],
   optimization: {
-    // 자동으로 알아서 'production' 일 경우에만 적용이 된다.
-    // 만약 'development' 모드일때도 적용하고싶다면, "minimize: true," 값을 "optimization" object에 추가하면 됨
-    minimizer: [new CssMinimizerPlugin()],
+    minimizer: [
+      // 자동으로 알아서 'production' 일 경우에만 적용이 된다.
+      // 만약 'development' 모드일때도 적용하고싶다면, "minimize: true," 값을 "optimization" object에 추가하면 됨
+      new CssMinimizerPlugin(),
+      ...(process.env.NODE_ENV === 'production'
+        ? // JS 코드를 난독화
+          [
+            new TerserPlugin({
+              terserOptions: {
+                compress: {
+                  // production 빌드일 경우 console.log() 제거함
+                  drop_console: true,
+                },
+              },
+            }),
+          ]
+        : []),
+    ],
   },
   devServer: {
     // 정적 파일을 제공할 경로. defautl 값은 웹팩 아웃풋
