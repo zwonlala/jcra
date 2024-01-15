@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
 import axios from 'axios';
+import React, { useEffect } from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 import Timer from './Timer';

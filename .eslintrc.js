@@ -33,5 +33,29 @@ module.exports = {
   },
   rules: {
     'import/no-default-export': 'warn',
+    'import/order': [
+      'error', // 해당 규칙을 위반할 경우 error 로 처리
+      {
+        //  'builtin', 'external', 'internal' 세 그룹으로 분리
+        groups: ['builtin', 'external', ['parent', 'sibling'], 'index'],
+
+        // 패턴을 통해서 그룹을 생성.
+        // path에 'react'가 들어있다면, external 그룹으로 지정하고, 제일 위에(before) 위치
+        pathGroups: [
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+        ],
+        // alphabetize: 그룹에 속한 import 구문들을 알바벳 오름차순 정렬
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+        // 'newlines-between': 그룹과 그룹 사이에 new line을 추가
+        'newlines-between': 'always',
+      },
+    ],
   },
 };
