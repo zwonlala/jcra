@@ -1,3 +1,6 @@
+// @ts-check
+
+/** @type import('prettier').Options */
 module.exports = {
   arrowParens: 'always',
   bracketSameLine: true,
