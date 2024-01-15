@@ -1,5 +1,11 @@
+// @ts-check
+
+/**
+ * @type {import ('@babel/core').ConfigFunction}
+ */
 module.exports = {
   presets: [
+    /** @type {import ('@babel/core').PluginItem} */
     [
       '@babel/preset-env',
       {
