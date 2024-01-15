@@ -1,11 +1,13 @@
-const path = require('path');
-const webpack = require('webpack');
 const childProcess = require('child_process');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 주의! 구조분해 할당하여 CleanWebpackPlugin 사용하여야 함!
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const webpack = require('webpack');
+
 const { version } = require('./package.json');
 
 const CMD_CLI_LAST_COMMIT = 'git rev-parse --short HEAD';
@@ -47,12 +49,16 @@ module.exports = {
         ], // 역순으로 적용되어, 뒤에서부터 "css-loader" -> "style-loader" 적용되어야 함
       },
       {
-        test: /\.(ico|svg|png)$/,
+        test: /\.(ico|png)$/,
         loader: 'file-loader',
         options: {
           // publicPath: "dist/", // Q. public path가 있으면 정상적으로 동작하지 않는지 모르겠다...
           name: '[name].[ext]?[hash]',
         },
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
       },
       {
         test: /\.png$/,

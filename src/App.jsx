@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 
-import logo from './logo.svg';
+import LogoComponent from './logo.svg';
 import './App.css';
 import Timer from './Timer';
 
@@ -12,7 +12,8 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       const data = await axios(URL);
-      console.log('SJW', data.body);
+      console.log('SJW', data);
+      console.log('SJW2', data.data.data);
     };
     fetchData();
   }, []);
@@ -20,7 +21,7 @@ function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
+        <LogoComponent className='App-logo' />
         <Timer />
 
         <p>
