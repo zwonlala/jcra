@@ -16,6 +16,9 @@ const CMD_CLI_AUTHOR = 'git config user.name';
  */
 const mode = process.env.NODE_ENV || 'development';
 
+/**
+ * @type import('webpack').Configuration
+ */
 module.exports = {
   mode,
   entry: './src/index.jsx',
@@ -114,23 +117,27 @@ module.exports = {
     ],
   },
   devServer: {
-    // 정적 파일을 제공할 경로. defautl 값은 웹팩 아웃풋
-    contentBase: path.join(__dirname, 'dist'),
-    // 브라우져를 통해 접근하는 경로. 기본 값은 "/"
-    publicPath: '/',
+    static: {
+      // 정적 파일을 제공할 경로. defautl 값은 웹팩 아웃풋
+      directory: path.resolve(__dirname, 'static'),
+      // 브라우져를 통해 접근하는 경로. 기본 값은 "/"
+      publicPath: '/',
+    },
     // 개발환경에서 도메인을 맞추어야 하는 상황에서 사용.
     // ex) 쿠키 기반의 인증은 인증 서버와 동일한 도메인으로 개발 환경을 맞추어야 함.
     // -> 운영체제의 호스트 파일에 해당 도메인과 127.0.0.1 연결한 뒤 host 속성에 도메인을 설정하여 사용함.
     // host: "dev.domain.com",
     host: 'localhost',
-    // 빌드시 에러나 경고를 브라우져 화면에 표시함
-    overlay: true,
     // 개발 서버 포트 번호 설정. 기본값은 8080
     port: 8081,
-    // 메시지 수준을 정할 수 있다. 'none', 'errors-only', 'minimal', 'normal', 'verbose'로 메시지 수준을 조절함
-    stats: 'errors-only',
+
     // 히스토리 api를 사용하는 SPA 개발시 설정. 404가 발생하면 index.html로 리다이렉트함.
     historyApiFallback: true,
+
+    devMiddleware: {
+      // 메시지 수준을 정할 수 있다. 'none', 'errors-only', 'minimal', 'normal', 'verbose'로 메시지 수준을 조절함
+      stats: 'errors-only',
+    },
 
     // 서버가 시작된 후 브라우져를 열도록 dev-server에 지시
     open: true,
