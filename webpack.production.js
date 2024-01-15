@@ -24,6 +24,11 @@ module.exports = () =>
             'css-loader',
           ], // 역순으로 적용되어, 뒤에서부터 "css-loader" -> "style-loader" 적용되어야 함
         },
+        {
+          test: /\.s[ac]ss$/,
+          exclude: /node_modules/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        },
       ],
     },
     plugins: [

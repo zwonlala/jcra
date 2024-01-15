@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 
 import LogoComponent from './logo.svg';
 import './App.css';
+import './App.custom.sass';
 import Timer from './Timer';
 
 /** mock api url */
