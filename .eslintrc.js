@@ -33,6 +33,7 @@ module.exports = {
   },
   rules: {
     'import/no-default-export': 'warn',
+    'import/no-extraneous-dependencies': 'off',
     'import/order': [
       'error', // 해당 규칙을 위반할 경우 error 로 처리
       {
