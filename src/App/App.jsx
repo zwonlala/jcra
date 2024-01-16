@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
-import LogoComponent from './logo.svg';
-import './App.css';
-import './App.custom.sass';
-import Timer from '../component/Timer/Timer';
+import About from '../component/About/About';
+import Error from '../component/Error';
+import Main from '../component/Main/Main';
+import Todo from '../component/Todo/Todo';
 
 /** mock api url */
 const URL = 'https://yts.mx/api/v2/list_movies.json';
@@ -19,21 +20,33 @@ function App() {
     fetchData();
   }, []);
 
-  return (
-    <div className='App'>
-      <header className='App-header'>
-        <LogoComponent className='App-logo' />
-        <Timer />
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Main />,
+      errorElement: <Error />,
+    },
+    {
+      path: 'about',
+      element: <About />,
+      errorElement: <Error />,
+    },
+    {
+      path: 'todo',
+      element: <Todo />,
+      errorElement: <Error />,
+    },
+    {
+      path: '*',
+      element: (
+        <div>
+          <h1>404</h1>
+        </div>
+      ),
+    },
+  ]);
 
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className='App-link' href='https://reactjs.org' target='_blank' rel='noopener noreferrer'>
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
