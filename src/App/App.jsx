@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import LogoComponent from './logo.svg';
 import './App.css';
 import './App.custom.sass';
-import Timer from './Timer';
+import Timer from '../component/Timer/Timer';
 
 /** mock api url */
 const URL = 'https://yts.mx/api/v2/list_movies.json';

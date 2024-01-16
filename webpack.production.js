@@ -36,7 +36,7 @@ module.exports = () =>
        * @docs https://github.com/jantimon/html-webpack-plugin#options
        */
       new HtmlWebpackPlugin({
-        template: './public/index.html',
+        template: './src/index.html',
         // 'production' 일 경우 minify 옵션 사용
         minify: {
           collapseWhitespace: true, // 'production' 일 경우 빈칸 제거
