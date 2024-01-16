@@ -37,4 +37,8 @@ module.exports = () =>
         hash: true, // 정적 파일을 불러올때 쿼리문자열에 웹팩 해쉬값을 추가함.
       }),
     ],
+    // eval-cheap-source-map과 유사하지만,
+    // 이 경우 더 나은 결과를 위해 로더의 소스맵을 사용합니다.
+    // 그러나 로더의 소스맵은 라인 당 단일 매핑으로 단순화됩니다
+    devtool: 'eval-cheap-module-source-map',
   });

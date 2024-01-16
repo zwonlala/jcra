@@ -141,3 +141,35 @@ https://fgh0296.tistory.com/15 참고
 &nbsp;
 
 
+## source-map 이란..?
+
+참고하면 좋을 글
+
+- [지그재그 블로그 "소스 맵의 동작 원리는 무엇일까?"](https://wormwlrm.github.io/2023/06/04/What-are-Source-Maps.html)
+- ["Source Map Revision 3 Proposal" docs](https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k/preview?pli=1#heading=h.fc227cy4qh38)
+- [webpack 공식문서 "Devtool"](https://webpack.kr/configuration/devtool/)
+- [webpack 공식문서 "SourceMapDevToolPlugin"](https://webpack.kr/plugins/source-map-dev-tool-plugin)
+- https://developer.chrome.com/docs/devtools/javascript/source-maps?hl=ko
+
+
+
+> 소스 맵(source map) 은 원본(original) 소스 코드와 변환된(transpiled) 소스 코드 사이의 매핑 정보가 선언된 파일
+
+- .map 확장자 이름을 가지고 있음
+
+사용하는 이유:
+- 번들링된 파일에서 에러가 날 경우, 원본 파일의 어느 부분에서 문제가 발생한 것인지 인지하기 어려움
+
+
+
+### 1.0
+
+- local: `devtool: 'eval-cheap-module-source-map'`
+  eval-cheap-source-map과 유사하지만, 이 경우 더 나은 결과를 위해 로더의 소스맵을 사용합니다. 그러나 로더의 소스맵은 라인 당 단일 매핑으로 단순화됩니다
+  
+- staging : `devtool: 'source-map',`
+  source-map - 전체 소스맵을 별도의 파일로 내보냅니다. 번들에 참조 주석을 추가하여 개발 도구에서 찾을 수 있도록 합니다.
+
+- propd :  `devtool: 'hidden-source-map',`
+  hidden-source-map - source-map과 동일하지만 번들에 참조 주석을 추가하지 않습니다. 오류 보고서의 오류 스텍 추적에만 소스맵을 매핑하고 브라우저 개발 도구에는 소스맵을 노출하지 않는 경우에 유용합니다.
+
