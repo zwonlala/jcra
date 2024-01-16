@@ -58,5 +58,7 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
   },
 };
