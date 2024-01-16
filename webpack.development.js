@@ -32,7 +32,7 @@ module.exports = () =>
        * @docs https://github.com/jantimon/html-webpack-plugin#options
        */
       new HtmlWebpackPlugin({
-        template: './public/index.html',
+        template: './src/index.html',
         minify: false,
         hash: true, // 정적 파일을 불러올때 쿼리문자열에 웹팩 해쉬값을 추가함.
       }),
