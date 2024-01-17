@@ -1,12 +1,10 @@
 /*!
  * Version: 1.0.0
- * Build Date: 2024. 1. 16. 오후 11:11:56
+ * Build Date: 2024. 1. 17. 오후 2:32:41
  * Author: zwonlala
- * Last Commit: a673022
+ * Last Commit: cbcec42
  *
  */
-
-/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
 /**
  * @license React
