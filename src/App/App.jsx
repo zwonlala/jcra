@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { useEffect } from 'react';
+// import axios from 'axios';
+// import { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import About from '../component/About/About';
@@ -8,17 +8,17 @@ import Main from '../component/Main/Main';
 import Todo from '../component/Todo/Todo';
 
 /** mock api url */
-const URL = 'https://yts.mx/api/v2/list_movies.json';
+// const URL = 'https://yts.mx/api/v2/list_movies.json';
 
 function App() {
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await axios(URL);
-      console.log('SJW', data);
-      console.log('SJW2', data.data.data);
-    };
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await axios(URL);
+  //     console.log('SJW', data);
+  //     console.log('SJW2', data.data.data);
+  //   };
+  //   fetchData();
+  // }, []);
 
   const router = createBrowserRouter([
     {
