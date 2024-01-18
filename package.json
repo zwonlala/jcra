@@ -13,6 +13,8 @@
     "remove-source-map": "rm -rf ./dist/**.map",
     "build:versel": "echo 'npm run build:versel' && npm run git-setting && npm run build",
     "build:versel:test": "npm run build",
+    "postbuild":"echo 'npm run postbuild'",
+    "postbuild:versel": "echo 'npm run postbuild:versel'",
     "======================================= 배포 =======================================": "",
     "predeploy": "npm run build && npm run remove-source-map",
     "deploy": "gh-pages -d dist",
