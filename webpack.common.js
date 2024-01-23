@@ -26,6 +26,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve('./dist'), // Q. path.resolve() 사용하는 이유?
+    publicPath: '/', // 모든 자원(번들 파일, 이미지, 스타일시트 등)이 루트 경로에서 로드됨을 의미
   },
   module: {
     rules: [

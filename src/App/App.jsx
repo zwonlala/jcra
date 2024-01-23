@@ -1,9 +1,9 @@
 // import axios from 'axios';
 // import { useEffect } from 'react';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import About from '../component/About/About';
-import Error from '../component/Error';
+// import Error from '../component/Error';
 import Main from '../component/Main/Main';
 import Todo from '../component/Todo/Todo';
 
@@ -20,35 +20,26 @@ function App() {
   //   fetchData();
   // }, []);
 
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Main />,
-      errorElement: <Error />,
-      children: [
-        {
-          path: 'about',
-          element: <About />,
-          errorElement: <Error />,
-        },
-        {
-          path: 'todo',
-          element: <Todo />,
-          errorElement: <Error />,
-        },
-        {
-          path: '*',
-          element: (
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Main />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/todo' element={<Todo />} />
+      </Routes>
+
+      <Routes>
+        <Route
+          path='*'
+          element={
             <div>
               <h1>404</h1>
             </div>
-          ),
-        },
-      ],
-    },
-  ]);
-
-  return <RouterProvider router={router} />;
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
