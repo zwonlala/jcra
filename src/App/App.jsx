@@ -25,24 +25,26 @@ function App() {
       path: '/',
       element: <Main />,
       errorElement: <Error />,
-    },
-    {
-      path: 'about',
-      element: <About />,
-      errorElement: <Error />,
-    },
-    {
-      path: 'todo',
-      element: <Todo />,
-      errorElement: <Error />,
-    },
-    {
-      path: '*',
-      element: (
-        <div>
-          <h1>404</h1>
-        </div>
-      ),
+      children: [
+        {
+          path: 'about',
+          element: <About />,
+          errorElement: <Error />,
+        },
+        {
+          path: 'todo',
+          element: <Todo />,
+          errorElement: <Error />,
+        },
+        {
+          path: '*',
+          element: (
+            <div>
+              <h1>404</h1>
+            </div>
+          ),
+        },
+      ],
     },
   ]);
 
