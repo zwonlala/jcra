@@ -1,4 +1,4 @@
-const childProcess = require('child_process');
+// const childProcess = require('child_process');
 const path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin'); // 주의! 구조분해 할당하여 CleanWebpackPlugin 사용하여야 함!
@@ -6,8 +6,8 @@ const webpack = require('webpack');
 
 const { version } = require('./package.json');
 
-const CMD_CLI_LAST_COMMIT = 'git rev-parse --short HEAD';
-const CMD_CLI_AUTHOR = 'git config user.name';
+// const CMD_CLI_LAST_COMMIT = 'git rev-parse --short HEAD';
+// const CMD_CLI_AUTHOR = 'git log -1 --pretty=format:"%an"';
 
 /**
  * "development" "production" "none" 중 하나
@@ -26,6 +26,7 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve('./dist'), // Q. path.resolve() 사용하는 이유?
+    publicPath: '/', // 모든 자원(번들 파일, 이미지, 스타일시트 등)이 루트 경로에서 로드됨을 의미
   },
   module: {
     rules: [
@@ -59,11 +60,9 @@ module.exports = {
   },
   plugins: [
     new webpack.BannerPlugin({
-      banner:
-        `Version: ${version}` +
-        `\nBuild Date: ${new Date().toLocaleString()}` +
-        `\nAuthor: ${childProcess.execSync(CMD_CLI_AUTHOR)}` +
-        `Last Commit: ${childProcess.execSync(CMD_CLI_LAST_COMMIT)}`,
+      banner: `Version: ${version}` + `\nBuild Date: ${new Date().toLocaleString()}`,
+      // `\nAuthor: ${childProcess.execSync(CMD_CLI_AUTHOR)}` +
+      // `Last Commit: ${childProcess.execSync(CMD_CLI_LAST_COMMIT)}`,
     }),
     new webpack.EnvironmentPlugin([]),
     /**
